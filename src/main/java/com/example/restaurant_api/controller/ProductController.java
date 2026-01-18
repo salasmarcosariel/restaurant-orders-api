@@ -1,0 +1,23 @@
+package com.example.restaurant_api.controller;
+
+import com.example.restaurant_api.model.Product;
+import com.example.restaurant_api.service.ProductService;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/products")
+public class ProductController {
+
+    private final ProductService service;
+
+    public ProductController(ProductService service) {
+        this.service = service;
+    }
+
+    @GetMapping
+    public List<Product> getAll() {
+        return service.findAll();
+    }
+}
